@@ -359,7 +359,7 @@ fn f32_needs_bits(a: f32) -> bool {
     }
     return a.is_nan()
         || ((a as f64) as f32).to_bits() != a.to_bits()
-        || (format!("{:.}", a).parse::<f64>().unwrap() as f32).to_bits() != a.to_bits();
+        || (format!("{}", a).parse::<f64>().unwrap() as f32).to_bits() != a.to_bits();
 }
 
 fn f64_needs_bits(a: f64) -> bool {
@@ -388,7 +388,7 @@ fn f32_to_js_value(val: f32) -> String {
     } else if val.is_sign_negative() && val == 0f32 {
         format!("-0")
     } else {
-        format!("{:.}", val)
+        format!("{}", val)
     }
 }
 
@@ -400,7 +400,7 @@ fn f64_to_js_value(val: f64) -> String {
     } else if val.is_sign_negative() && val == 0f64 {
         format!("-0")
     } else {
-        format!("{:.}", val)
+        format!("{}", val)
     }
 }
 
